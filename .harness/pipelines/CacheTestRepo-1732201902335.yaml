@@ -14,17 +14,29 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Echo Welcome Message
-                  identifier: Echo_Welcome_Message
+                  name: build
+                  identifier: build
                   spec:
-                    shell: Sh
-                    command: echo "Welcome to Harness CI"
+                    shell: Powershell
+                    command: |-
+                      cd csharp
+                      dotnet restore
+                      dotnet build
+                      dotnet nuget locals all --list
+                      Get-ChildItem -Force | Sort-Object LastWriteTime | Format-Table -Property Mode, LastWriteTime, Length, Name
+                      cat nuget.config
           platform:
-            os: Linux
+            os: Windows
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
+          caching:
+            enabled: true
+            paths: []
+          buildIntelligence:
+            enabled: false
+        description: ""
   properties:
     ci:
       codebase:
