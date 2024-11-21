@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_avijeetsm_CacheTestRepo_1732201907122-pr-trigger-input-set
+  identifier: Build_avijeetsm_CacheTestRepo_1732201907122prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_avijeetsm_CacheTestRepo_1732201907122
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
