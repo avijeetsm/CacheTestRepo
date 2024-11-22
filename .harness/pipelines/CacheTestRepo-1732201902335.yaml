@@ -13,6 +13,13 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: avijeetsm/drone-cache
+              - step:
                   type: Run
                   name: build
                   identifier: build
